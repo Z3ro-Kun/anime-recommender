@@ -1,0 +1,184 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Anime-inspired color palette */
+    --background: 240 23% 9%;
+    --foreground: 300 20% 98%;
+
+    --card: 240 30% 12%;
+    --card-foreground: 300 20% 98%;
+
+    --popover: 240 30% 12%;
+    --popover-foreground: 300 20% 98%;
+
+    --primary: 260 70% 55%;
+    --primary-foreground: 300 20% 98%;
+
+    --secondary: 240 15% 20%;
+    --secondary-foreground: 300 20% 98%;
+
+    --muted: 240 15% 15%;
+    --muted-foreground: 300 10% 70%;
+
+    --accent: 315 80% 65%;
+    --accent-foreground: 240 23% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 300 20% 98%;
+
+    --border: 240 15% 20%;
+    --input: 240 30% 15%;
+    --ring: 260 70% 55%;
+
+/* Anime-themed custom properties */
+    --gradient-anime: linear-gradient(135deg, hsl(260, 70%, 55%), hsl(315, 80%, 65%), hsl(200, 100%, 70%));
+    --gradient-card: linear-gradient(145deg, hsl(240, 30%, 12%), hsl(240, 25%, 18%));
+    --gradient-hero: linear-gradient(180deg, hsl(240, 23%, 9%), hsl(260, 30%, 15%));
+    --gradient-glass: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    --gradient-border: linear-gradient(90deg, hsl(260, 70%, 55%), hsl(315, 80%, 65%));
+    --glow-primary: 0 0 30px hsl(260, 70%, 55%, 0.5);
+    --glow-accent: 0 0 20px hsl(315, 80%, 65%, 0.4);
+    --glow-card: 0 10px 40px hsl(260, 70%, 55%, 0.2);
+    --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3);
+    
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Same theme for dark mode consistency */
+    --background: 240 23% 9%;
+    --foreground: 300 20% 98%;
+
+    --card: 240 30% 12%;
+    --card-foreground: 300 20% 98%;
+
+    --popover: 240 30% 12%;
+    --popover-foreground: 300 20% 98%;
+
+    --primary: 260 70% 55%;
+    --primary-foreground: 300 20% 98%;
+
+    --secondary: 240 15% 20%;
+    --secondary-foreground: 300 20% 98%;
+
+    --muted: 240 15% 15%;
+    --muted-foreground: 300 10% 70%;
+
+    --accent: 315 80% 65%;
+    --accent-foreground: 240 23% 9%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 300 20% 98%;
+
+    --border: 240 15% 20%;
+    --input: 240 30% 15%;
+    --ring: 260 70% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-hero);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+  
+  /* Animated background stars */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+      radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.3), transparent);
+    background-repeat: repeat;
+    background-size: 200px 150px;
+    animation: twinkle 4s ease-in-out infinite alternate;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  .anime-glow {
+    box-shadow: var(--glow-primary);
+  }
+  
+  .accent-glow {
+    box-shadow: var(--glow-accent);
+  }
+  
+  .glass-card {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: var(--shadow-glass);
+  }
+  
+  .glass-input {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .gradient-border {
+    position: relative;
+    background: var(--gradient-border);
+    border-radius: 1rem;
+    padding: 2px;
+  }
+  
+  .gradient-border-content {
+    background: var(--background);
+    border-radius: calc(1rem - 2px);
+  }
+  
+  .anime-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .anime-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--glow-card);
+  }
+}
