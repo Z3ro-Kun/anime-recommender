@@ -72,7 +72,7 @@ uvicorn backend.main:app --reload
 
 ➡️ Runs at: http://127.0.0.1:8000
 
-### **1. Frontend Setup **
+### 1. Frontend Setup 
 
 ```bash
 cd anime_recs_front/anime-recs-bliss
